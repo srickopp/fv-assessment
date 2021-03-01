@@ -22,7 +22,7 @@ class BookingFactory extends Factory
     public function definition()
     {
         return [
-            'created_at_local' => $this->faker->dateTime,
+            'created_at_local' => now(),
             'passenger_id' => $this->faker->randomDigitNotNull,
             'state' => $this->faker->randomElement([
                 Booking::STATE_COMPLETED,
