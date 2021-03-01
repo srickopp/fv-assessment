@@ -22,7 +22,9 @@ class DriverFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'phone_number' => $this->faker->phoneNumber,
+            'email' => strtolower($this->faker->firstName).'@'.$this->faker->randomElement(['fvtaxi.com','fvdrive.com','gmail.com'])
         ];
     }
 }
