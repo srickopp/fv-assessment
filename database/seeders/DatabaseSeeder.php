@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Models\Booking;
+use App\Models\Models\Driver;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Driver::factory(10)->create()->each( function ($driver) {
+            // Make a booking data
+            $booking = Booking::factory(3)->make();
+            $driver->bookings()->saveMany($booking);
+        });
     }
 }
