@@ -16,12 +16,13 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id('booking_id');
             $table->timestamp('created_at_local');
-            $table->integer('driver_id')->unsigned();
-            $table->integer('passenger_id');
-            $table->string('state');
-            $table->integer('country_id');
+            $table->unsignedBigInteger('driver_id');
+            $table->integer('passenger_id')->unsigned();
+            $table->enum('state', ['COMPLETED', 'CANCELLED_PASSENGER', 'CANCELLED_DRIVER']);
+            $table->integer('country_id')->unsigned();
             $table->float('fare', 11, 2);
             $table->timestamps();
+            $table->foreign('driver_id')->references('driver_id')->on('drivers');
         });
     }
 
