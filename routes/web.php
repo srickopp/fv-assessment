@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/address', [AddressController::class, 'index'])->name('address');
+Route::post('/address/store', [ AddressController::class, 'store' ]);
+Route::get('/booking', [BookingController::class, 'index'])->name('booking');
