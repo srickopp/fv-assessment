@@ -17,7 +17,7 @@ class Booking extends Model
     protected $guard = [];
 
     public function driver() {
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(Driver::class, 'driver_id');
     }
 
 }
