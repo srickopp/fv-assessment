@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         Driver::factory(10)->create()->each( function ($driver) {
             // Make a booking data
-            $booking = Booking::factory(3)->make();
+            $booking = Booking::factory(30)->make();
             $driver->bookings()->saveMany($booking);
         });
     }
