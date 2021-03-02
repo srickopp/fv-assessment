@@ -23,13 +23,13 @@ class BookingFactory extends Factory
     {
         return [
             'created_at_local' => now(),
-            'passenger_id' => $this->faker->randomDigitNotNull,
+            'passenger_id' => $this->faker->numberBetween(1,7),
             'state' => $this->faker->randomElement([
                 Booking::STATE_COMPLETED,
                 Booking::STATE_CANCELLED_DRIVER,
                 Booking::STATE_CANCELLED_PASSENGER,
             ]),
-            'country_id' => $this->faker->randomDigitNotNull,
+            'country_id' => $this->faker->numberBetween(10,23),
             'fare' => $this->faker->randomFloat(2, 2, 123802),
         ];
     }

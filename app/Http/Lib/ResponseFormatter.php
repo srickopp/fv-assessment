@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Lib;
+namespace App\Http\Lib;
 /**
  * This class is used to format JSON response for the API
  */
