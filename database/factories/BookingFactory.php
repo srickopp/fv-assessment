@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Factories\Models;
+namespace Database\Factories;
 
-use App\Models\Models\Booking;
+use App\Models\Booking;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BookingFactory extends Factory

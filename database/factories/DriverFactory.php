@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Factories\Models;
+namespace Database\Factories;
 
-use App\Models\Models\Driver;
+use App\Models\Driver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DriverFactory extends Factory

@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Models\Booking;
-use App\Models\Models\Driver;
+use App\Models\Booking;
+use App\Models\Driver;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Log;
 
 class DatabaseSeeder extends Seeder
 {
