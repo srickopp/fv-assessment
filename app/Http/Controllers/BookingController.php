@@ -17,7 +17,7 @@ class BookingController extends Controller
     }
 
     public function getAll(){
-        $get_data = $this->bookingService->getAll();
+        $get_data = $this->bookingService->reportData();
         if(count($get_data) <= 0) {
             return ResponseFormatter::error(null, 'DATA_NOT_FOUND', 404);
         }
@@ -25,5 +25,15 @@ class BookingController extends Controller
         return ResponseFormatter::success($get_data, 'GET_DATA');
     }
 
+    public function index(){
+        $driver_data = $this->bookingService->getAllDriver();
+        $booking_data = $this->bookingService->getAllBookingData();
+        $report_data = $this->bookingService->reportData();
+        return view('pages.booking', [
+            'driver_data' => $driver_data,
+            'booking_data' => $booking_data,
+            'reports' => $report_data
+        ]);
+    }
 
 }

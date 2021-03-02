@@ -2,17 +2,20 @@
 
 namespace App\Http\Services;
 
+use App\Models\Booking;
 use App\Models\Driver;
 
 class BookingService {
     private $driverModels;
+    private $bookingModels;
 
-    public function __construct(Driver $driverModels)
+    public function __construct(Booking $bookingModels, Driver $driverModels)
     {
         $this->driverModels = $driverModels;
+        $this->bookingModels = $bookingModels;
     }
 
-    public function getAll(){
+    public function reportData(){
         $get_driver_data = $this->driverModels->where( function ($query) {
             $email_filter = ['fvtaxi', 'fvdrive'];
             foreach($email_filter as $filter){
@@ -69,5 +72,13 @@ class BookingService {
         });
 
         return $driver_recap;
+    }
+
+    public function getAllDriver(){
+        return $this->driverModels->get();
+    }
+
+    public function getAllBookingData(){
+        return $this->bookingModels->get();
     }
 }

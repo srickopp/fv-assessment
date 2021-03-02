@@ -40,4 +40,28 @@ class AddressController extends Controller
         return ResponseFormatter::success($format_address, 'SUCCESS');
 
     }
+
+    public function index(){
+        return view('pages.address');
+    }
+
+    public function store(AddressRequest $request){
+        $validated_request = $request->validated();
+        $addresses = [$validated_request['address1'], $validated_request['address2'], $validated_request['address3']];
+        // Validate addreess length
+        $validate_address = $this->addressService->validateLength($addresses);
+
+        // If the address is 0 or more than 90 charcter return error response;
+        if(!$validate_address){
+            return back()->with('failed', 'Invalid address');
+        }
+        
+        // Merge all addresses line;
+        $merge_address = $this->addressService->mergeFormatAddress($addresses);
+
+        // Format address;
+        $format_address = $this->addressService->addressFormatter($merge_address);
+
+        return back()->withSuccess($format_address);
+    }
 }
