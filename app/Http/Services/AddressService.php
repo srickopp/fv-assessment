@@ -16,7 +16,7 @@ class AddressService {
         $index = 1;
         foreach($addresses as $address){
             // Check is the length for current line is less than 30 character  
-            if(strlen($formated_address['address'.$index]) < 30){
+            if((strlen($formated_address['address'.$index]) + strlen($address)) < 30){
                 // And if the length of the current line is 0, 
                 // is mean that the word is a first word for the line. 
                 if(strlen($formated_address['address'.$index]) == 0){
@@ -28,6 +28,8 @@ class AddressService {
             // move into the next lines.
             }else{
                 $index++;
+                // Initiate the first next line words
+                $formated_address['address'.$index] .= $address;
             }
         }
 
